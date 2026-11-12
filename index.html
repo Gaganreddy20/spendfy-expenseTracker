@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Spendly – Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>💸 Spendly</h1>
+            <input type="month" id="month" style="width:auto" aria-label="Month">
+        </header>
+
+        <div class="grid3" style="margin-bottom:12px">
+            <div class="stat"><small>Balance</small><b id="bal">₹0</b></div>
+            <div class="stat"><small>Income</small><b class="inc" id="inc">₹0</b></div>
+            <div class="stat"><small>Spent</small><b class="exp" id="exp">₹0</b></div>
+        </div>
+
+        <div class="card">
+            <h2>Monthly budget</h2>
+            <input type="number" id="budget" inputmode="decimal" min="0" placeholder="Set a budget (₹)">
+            <div class="bar"><i id="barfill"></i></div>
+            <small id="budtxt" style="color:var(--muted)">No budget set</small>
+        </div>
+
+        <div class="card">
+            <h2 id="formTitle">Add transaction</h2>
+            <div class="seg">
+                <button id="tExp" class="on">Expense</button>
+                <button id="tInc">Income</button>
+            </div>
+            <div class="row">
+                <input type="number" id="amount" inputmode="decimal" min="0" placeholder="Amount">
+                <select id="cat" aria-label="Category"></select>
+            </div>
+            <div class="row">
+                <input type="date" id="date" aria-label="Date">
+                <input type="text" id="note" maxlength="60" placeholder="Note (optional)">
+            </div>
+            <div class="err" id="err"></div>
+            <div class="row" style="margin:0">
+                <button id="save" style="flex:1">Add</button>
+                <button id="cancel" class="ghost" style="display:none">Cancel</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Spending by category</h2>
+            <div class="chart">
+                <svg id="donut" width="150" height="150" viewBox="0 0 100 100" role="img"
+                    aria-label="Spending by category"></svg>
+                <div class="legend" id="legend"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Transactions</h2>
+            <div class="chips">
+                <button class="on" data-f="all">All</button>
+                <button class="ghost" data-f="expense">Expenses</button>
+                <button class="ghost" data-f="income">Income</button>
+            </div>
+            <input type="text" id="q" placeholder="Search notes or categories" style="margin-bottom:8px">
+            <div id="list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
